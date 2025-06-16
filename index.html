@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ウェディングフォトブース</title>
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+    #frame-thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .frame-thumb {
+      width: 100px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .frame-thumb.selected {
+      border: 2px solid red;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+  <script src="script.js?version=2" defer></script>
+</head>
+<body>
+
+
+<div id="page1" class="page active"  >
+  <!-- スタート画面 -->
+     <h1>Welcome!</h1>
+     <p id="couple-name">RYU ＆ CHIHIRO</p>
+  <button id="startButton" class="page1-only">撮影をはじめる</button>
+</div>
+
+  <!-- メッセージ表示-->
+<div id="message-area" style="color: green; font-size: 20px; margin: 10px 0;"></div>
+
+
+<!-- 2ページ目：撮影画面 -->
+ <div id="page2" class="page"  >
+  <h2>撮影画面</h2>
+   <div id="photo-layout">
+    <!-- 左：カメラ映像 -->
+    <div id="photo-left">
+     <video id="camera" autoplay playsinline style="width: 100%; max-width: 600px; height: auto;"></video>
+     <div id="countdown" style="font-size: 32px;"></div>
+  　 </div>
+
+    <!-- 右：撮影写真 + ボタン -->
+    <div id="photo-right">
+     <div id="photo-results"></div>
+      <button id="goToFrameSelect" style="display: none;" onclick="goToPage(3)">フレーム選択へ</button>
+      </div>
+    </div>
+  <canvas id="photo-canvas" style="display: none;"></canvas>
+  <button id="take-3shots" class="page2-only">撮影</button>
+</div>
+
+<!-- 3ページ目：フレーム合成画面 -->
+<div id="page3" class="page">
+  <h2>フレーム選択</h2>
+  <div id="frame-thumbnails">
+    <p>フレームを選んでね！</p>
+    <img src="images/frame1.png" class="frame-thumb selected" data-src="images/frame1.png">
+    <img src="images/frame2.png" class="frame-thumb" data-src="images/frame2.png">
+  </div>
+  <canvas id="finalCanvas" style="margin-top: 10px;" ></canvas><br>
+  <button id="combine-with-frame" class="page3-only">フレーム合成する</button>
+  <button id="print-button" class="page3-only">印刷画面へ</button>
+</div>
+
+<!-- 4ページ目：印刷中画面 -->
+<div id="page4" class="page">
+  <h2>印刷中...</h2>
+  <p>Thank you!</p>
+  <button id="back-to-start" class="page4-only">最初に戻る</button>
+</div>
+
+
+</body>
+</html>

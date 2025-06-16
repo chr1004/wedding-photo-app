@@ -1,0 +1,99 @@
+/* 全体の背景・フォント設定 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Zen Maru Gothic', cursive;
+  background: linear-gradient(to bottom, #ffeef6, #e6f0ff);
+  color: #4a4a4a;
+  text-align: center;
+}
+
+
+/* 見出し・WELCOME */
+h1 {
+  font-size: 48px;
+  margin-top: 40px;
+  color: #ff69b4; /* 濃いピンク */
+  text-shadow: 2px 2px #ffffff;
+}
+
+/* RYU & CHIHIRO の表示 */
+#couple-name {
+  font-size: 24px;
+  font-style: italic;
+  color: silver;
+  margin-bottom: 30px;
+}
+
+/* ボタンスタイル */
+button {
+  background: #ffd1dc; /* ピンク */
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  transition: background 0.3s ease;
+}
+
+/*撮影画面レイアウト*/
+button:hover {
+  background: #ff69b4;
+}
+
+#photo-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#photo-left {
+  flex: 2;
+}
+
+#photo-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#photo-results img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* サムネイル */
+.frame-thumb {
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.frame-thumb:hover {
+  transform: scale(1.05);
+}
+
+.frame-thumb.selected {
+  border: 3px dashed silver;
+}
+
+#composite-result {
+  max-width: 80%;
+  height: auto;
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+#finalCanvas {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
