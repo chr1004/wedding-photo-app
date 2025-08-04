@@ -76,19 +76,30 @@ function setupPrintButton() {
   if (printButton && finalCanvas) {
     printButton.onclick = () => {
       try {
+        // Canvas を画像として生成し、印刷エリアに設定
         const imageURL = finalCanvas.toDataURL('image/png');
-        const a = document.createElement('a');
-        a.href = imageURL;
-        a.download = 'wedding_photo.png';
-        a.click();
+        const finalImage = document.getElementById('finalImage');
+        finalImage.src = imageURL;
+
+        // 印刷ページに移動（page4）
         goToPage(4);
+
+            // imgが描画されるまで待つ
+           finalImage.onload = () => {
+            setTimeout(() => {
+            window.print();
+           }, 300); // Safari対策で少しだけ待つ
+           };
+
       } catch (e) {
-        console.error('画像の保存に失敗:', e);
-        alert('画像保存に失敗しました。フレーム画像が外部URLになっていないか確認してください。');
+        console.error('印刷処理に失敗:', e);
+        alert('印刷に失敗しました。');
       }
     };
   }
 }
+
+
 
 
 // ========== 2枚撮影 ==========
@@ -163,13 +174,13 @@ function combineWithFrame() {
     new Promise(res => (photo2.onload = res)),
     new Promise(res => (frameImg.onload = res)),
   ]).then(() => {
-    finalCanvas.width = 990;
-    finalCanvas.height = 1410;
+    finalCanvas.width = 1051;
+    finalCanvas.height = 1500;
 
-    finalCtx.drawImage(photo1, 25, 145, 475, 285);
-    finalCtx.drawImage(photo1, 25, 845, 475, 285);
-    finalCtx.drawImage(photo2, 500, 145, 475, 285);
-    finalCtx.drawImage(photo2, 500, 845, 475, 285);
+    finalCtx.drawImage(photo1, 40, 160, 475, 285);
+    finalCtx.drawImage(photo1, 40, 880, 475, 285);
+    finalCtx.drawImage(photo2, 540, 160, 475, 285);
+    finalCtx.drawImage(photo2, 540, 880, 475, 285);
 
     finalCtx.drawImage(frameImg, 0, 0, finalCanvas.width, finalCanvas.height);
 

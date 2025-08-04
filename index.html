@@ -64,8 +64,8 @@
   <h2>フレーム選択</h2>
   <div id="frame-thumbnails">
     <p>フレームを選んでね！</p>
-    <img src="images/frame1.png" class="frame-thumb selected" data-src="images/frame1.png">
-    <img src="images/frame2.png" class="frame-thumb" data-src="images/frame2.png">
+    <img src="images/frame1.png" class="frame-thumb selected" data-src="images/frame1.png" style="width: 124mm; height: auto;">
+    <img src="images/frame2.png" class="frame-thumb" data-src="images/frame2.png" style="width: 124mm; height: auto;">
   </div>
   <canvas id="finalCanvas" style="margin-top: 10px;" ></canvas><br>
   <button id="combine-with-frame" class="page3-only">フレーム合成する</button>
@@ -76,6 +76,12 @@
 <div id="page4" class="page">
   <h2>印刷中...</h2>
   <p>Thank you!</p>
+
+    <!-- 印刷エリア（印刷する画像を表示） -->
+  <div id="print-area">
+    <img id="finalImage" style="width: 124mm; height: auto;">
+  </div>
+
   <button id="back-to-start" class="page4-only">最初に戻る</button>
 </div>
 

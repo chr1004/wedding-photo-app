@@ -97,3 +97,47 @@ button:hover {
   border-radius: 8px;
 }
 
+@media print {
+    html, body {
+    background: white !important;
+  }
+
+  /* 全体を一度隠す */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* 印刷したいエリアだけ表示 */
+  #print-area,
+  #print-area * {
+    visibility: visible !important;
+  }
+
+  /* 印刷位置調整 */
+  #print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 124mm;
+    height: 86mm;
+    background: white !important;  /* 念のため明示 */
+  }
+
+  /* 画像調整 */
+  #print-area img,
+  #print-area canvas {
+    width: 124mm;
+    height: 86mm;
+    page-break-inside: avoid;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ボタンなど非表示 */
+  .no-print {
+    display: none !important;
+  }
+}
